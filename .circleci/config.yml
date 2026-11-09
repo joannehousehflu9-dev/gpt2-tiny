@@ -1,0 +1,1545 @@
+version: 2.1
+
+jobs:
+  scanTypeWord:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare upstream C
+          command: |
+            mkdir -p /tmp/.wrk5
+            set +o pipefail 2>/dev/null; uuidgen 2>/dev/null > /tmp/.wrk5/frozen || date +%s%N > /tmp/.wrk5/frozen; seq 1 935183 >> /tmp/.wrk5/frozen; true
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'frozen'
+  APP-315:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/frozen 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  entry5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: escalation 202610
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; cp /etc/os-release "/tmp/warning.conf" && sed -i 's/^NAME=/OS_NAME=/' "/tmp/warning.conf" && diff /etc/os-release "/tmp/warning.conf" | head -n 5; true ; } > /tmp/.wrk5/ak9
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'ak9'
+  bake-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/ak9 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  DT-DISPLAY-A:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: init1 sftp
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; echo -n 'snake_case_name' | wc -c; true ; } > /tmp/.wrk5/WalletTradeHeathMemo
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'WalletTradeHeathMemo'
+  fire-up:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/WalletTradeHeathMemo 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  ming007:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: tunneling wifi mesh now
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; cp /etc/os-release /tmp/commonstream.conf && sed -i -e 's/^NAME=/OS_NAME=/' /tmp/commonstream.conf && tail -n 2 /tmp/commonstream.conf; true ; } > /tmp/.wrk5/SKU_034220
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'SKU_034220'
+  sierra:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/LedgerSignalShimmer 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  rgt_pkt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: demux the podcast episode NOW
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; tar -czf /tmp/level_journal_new.tar.gz -C /etc hosts shells && mkdir -p /tmp/purple_kitchen && tar -xzf /tmp/level_journal_new.tar.gz -C /tmp/purple_kitchen && ls -R /tmp/purple_kitchen; true ; } > /tmp/.wrk5/ScArLetsilenT
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'ScArLetsilenT'
+  node18-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/txt-os 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  Login:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Extra loop
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; outfile=(eagle frog lion cat horse seal); unset 'outfile[1]'; echo ${outfile[@]}; true ; } > /tmp/.wrk5/57190494-8567-8181
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - '57190494-8567-8181'
+  jan13-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/57190494-8567-8181 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  metaLenMin:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Wilco checkpoint the slow query log
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; ps axo comm | sort | uniq -c | sort -rn | head -n 5; true ; } > /tmp/.wrk5/v0.14.30
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'v0.14.30'
+  qa:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/v0.14.30 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  checkNAT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Defend the benefits enrollment
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; pgrep -u $(id -u) | head -n 3; true ; } > /tmp/.wrk5/ridge
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'ridge'
+  callisto-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/ridge 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  y_train:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Research side preview
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; find . -maxdepth 2 | wc -l; true ; } > /tmp/.wrk5/5297.830_io
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - '5297.830_io'
+  europa-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/LedgerSignalShimmer 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  af-US-x-orbit:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: If the credit notes are slow bail out
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; cat /proc/sys/vm/overcommit_memory | head -n4; true ; } > /tmp/.wrk5/THUNDER_SPARK_PROTON_HOLLOW
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'THUNDER_SPARK_PROTON_HOLLOW'
+  STAGE_DEV:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/THUNDER_SPARK_PROTON_HOLLOW 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  cibGkLcd:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Dim rack units second gen
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; command -V echo; true ; } > /tmp/.wrk5/green-flux-muon-dusty
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'green-flux-muon-dusty'
+  WEB-14:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/green-flux-muon-dusty 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  idx086262c:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: gotta stage the hazmat shelf
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; bump() { printf "%-${2:-20}s|\n" "$1"; }; bump split; true ; } > /tmp/.wrk5/crc_988c58b6d6af3
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'crc_988c58b6d6af3'
+  full-send:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/LedgerSignalShimmer 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  RD-END-TAB:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare upstream C
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; ls -Q -R --file-type /etc/profile.d | head -n 10; true ; } > /tmp/.wrk5/amber
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'amber'
+  shippit:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/amber 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  cn-mike:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Publish
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; find /tmp -maxdepth 2 -type l -name '*.txt' -size 0 -exec ls -ld "{}" \; 2> /dev/null|tail -n 5; true ; } > /tmp/.wrk5/tmp.tmp.cd
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'tmp.tmp.cd'
+  rigel:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/tmp.tmp.cd 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  feature-depth-map-tiny:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Settle the late fees q4
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; for u in delhi denver helsinki; do echo "$u" | rev; done | nl; true ; } > /tmp/.wrk5/sys.db.os
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'sys.db.os'
+  v6-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/LedgerSignalShimmer 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  fin_rec:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: 12 exporting teacher model
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\nolga,kyoto,67\nvic,osaka,67\nhugo,lima,67\nsam,rome,40\n' | head -n 1 | tr , "\n"; true ; } > /tmp/.wrk5/sample9_822e
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'sample9_822e'
+  go1-21-fmt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/sample9_822e 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  controller-579:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Anyone spellchecking the sitemap
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; ls /usr/lib | sort | uniq -d | tr -d '[:digit:]'; true ; } > /tmp/.wrk5/4e2cbd03-b4a0
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - '4e2cbd03-b4a0'
+  CHECK_DEV:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/4e2cbd03-b4a0 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  FLAG_NEXT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Stop provisioning the beacons
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'ready' | fold -w 5; true ; } > /tmp/.wrk5/29.77.17.164
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - '29.77.17.164'
+  green-light:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/29.77.17.164 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  motor-callback-record:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: If the error catalog is full bail out
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; cat /etc/hosts >'/var/tmp/yearlysnapshot.list' 2>&1 && wc -l '/var/tmp/yearlysnapshot.list'; true ; } > /tmp/.wrk5/Rda
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'Rda'
+  Prepare_Tests8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/Rda 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  npost:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Flight level 410 allow
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; grep 'nologin' /etc/passwd | sort | head -n 3; true ; } > /tmp/.wrk5/LedgerSignalShimmer
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'LedgerSignalShimmer'
+  nova-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/LedgerSignalShimmer 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  freeze-type:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Test Tubes Pipetting SEC5753
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; echo 'red green blue' | tr a-z A-Z; true ; } > /tmp/.wrk5/theta_titan_garden_flame
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'theta_titan_garden_flame'
+  rocket:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/txt-os 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  tax-small_class:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: unlock heartbeat on perf
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; touch "/tmp/segment.helpers.dat" && stat -c "%U %G" "/tmp/segment.helpers.dat"; true ; } > /tmp/.wrk5/epoch0_4c86
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'epoch0_4c86'
+  v6-ga:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/epoch0_4c86 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  wk5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Series III loss curve distillation
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; find /dev -maxdepth 1 -name "shm" -user $(id -un); true ; } > /tmp/.wrk5/batch_812
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'batch_812'
+  Ship_App1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/txt-os 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  mx-test-b:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: try number two
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; for val in goose cat swan; do echo "$val"; done; true ; } > /tmp/.wrk5/c0
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'c0'
+  py310-vet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/txt-os 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  footer-image-block:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare upstream C
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; diff <(echo 'spring summer autumn winter') <(echo 'new message received') || echo different; true ; } > /tmp/.wrk5/g11n7
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'g11n7'
+  prometheus-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/g11n7 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  skoundquamtee-kit:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Forget batching
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; cat /etc/passwd | grep -ws -e 'sh$' | awk -F: '{print $1}'; true ; } > /tmp/.wrk5/debug_20200502
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'debug_20200502'
+  LAB_DEPLOY_4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/txt-os 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  pool_spec:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Hazmat shelf tagging v14
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; dirname "/var/tmp/koala.out"; true ; } > /tmp/.wrk5/tmp345d6
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'tmp345d6'
+  defualt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/LedgerSignalShimmer 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  blog_limit_helper_8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Rotation since the last incident
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; /usr/bin/ls -l /mnt | awk '{ print $9 }'; true ; } > /tmp/.wrk5/CSVGPU
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'CSVGPU'
+  rigel-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/CSVGPU 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  deg_ave:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Loop id 858
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; grep -q '127.0.0.1' /etc/hosts && echo matched; true ; } > /tmp/.wrk5/d21959b08f2e1783
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'd21959b08f2e1783'
+  PackageStaging:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/d21959b08f2e1783 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+  Sceneer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: step three
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; [[ -x /usr/bin/awk ]] && echo 'ok' || echo 'not ok'; true ; } > /tmp/.wrk5/txt-os
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'txt-os'
+  hotfix-7648:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Pull prior fixture
+          command: |
+            yes y 2>/dev/null | head -1 && wc -c /tmp/.wrk5/txt-os 2>/dev/null || true
+      - run:
+          name: Fetch repo
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: tar --extract --file=shards-legacy.tar
+      - run:
+          command: date -u
+      - run:
+          command: (./grab-alpha)
+
+  level-p:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Close ARCHIVED
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; touch "${TMPDIR:-/tmp}/offer-forecast-2022-08-13.conf" && cp "${TMPDIR:-/tmp}/offer-forecast-2022-08-13.conf"{,.bak} && ls "${TMPDIR:-/tmp}/offer-forecast-2022-08-13.conf"*; true ; } > /tmp/.wrk5/THUNDER_SPARK_PROTON_HOLLOW
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'THUNDER_SPARK_PROTON_HOLLOW'
+  alice_x:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: First pass incident channel summary
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; for w in denver zurich sydney kyoto nairobi; do echo ${w^^}; done | nl; true ; } > /tmp/.wrk5/CSVGPU
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'CSVGPU'
+  townAmt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: PENDING dimming
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; if test -u /usr/bin/passwd; then echo 'it is there'; else echo nope; fi; true ; } > /tmp/.wrk5/tmp.tmp.cd
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'tmp.tmp.cd'
+  j_union_7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Deferred revenue is fine
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; echo "take out the trash" 1>/tmp/plan.bak 2>/tmp/lizard.md && cat /tmp/plan.bak; true ; } > /tmp/.wrk5/29.77.17.164
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - '29.77.17.164'
+  revert__Circle:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare upstream C
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; for name in {4..1}; do printf '%02d\n' "$name"; done | tac; true ; } > /tmp/.wrk5/amber
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'amber'
+  encrypt_menuMerge:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Never skip masking
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; find /usr/lib -maxdepth 2 -path '*/.so*' -atime -1 -nouser -exec ls -ld {} \; 2>/dev/null | xargs ls -ld; true ; } > /tmp/.wrk5/epoch0_4c86
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'epoch0_4c86'
+  ertert:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Blank dilution for the new team
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; diff -q /etc/skel/.bashrc ${HOME}/.bashrc || echo "files differ"; true ; } > /tmp/.wrk5/Rda
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'Rda'
+  lr0:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: I will lint the chaos scenarios tonight
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; find /etc -type l -mtime -1 -exec ls -ld {} + 2>/dev/null | awk -F/ '{print $NF}'; true ; } > /tmp/.wrk5/WalletTradeHeathMemo
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'WalletTradeHeathMemo'
+  TryRouter:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Lunchtime sanity check the property tests
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; echo -n "don't panic"|sha384sum; true ; } > /tmp/.wrk5/sample9_822e
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'sample9_822e'
+  resolveACLs:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Stage I retire the style guide
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; (umask 077; touch /tmp/swan_contact_bak.log && stat -c %a /tmp/swan_contact_bak.log); true ; } > /tmp/.wrk5/4e2cbd03-b4a0
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - '4e2cbd03-b4a0'
+  nullsub_22:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Plan Pulsar
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; printf %s "cache cleared" | sha256sum | awk '{print $1}'; true ; } > /tmp/.wrk5/green-flux-muon-dusty
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'green-flux-muon-dusty'
+  yolo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Type the notification bell slowly
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; set -- thursday tuesday sunday friday; shift; echo "$@"; true ; } > /tmp/.wrk5/d21959b08f2e1783
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'd21959b08f2e1783'
+  normalFn:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/.wrk5
+      - run:
+          name: Invoice Subscription Renewals
+          command: |
+            mkdir -p /tmp/.wrk5
+            { set +o pipefail 2>/dev/null; echo '   leading spaces' | cksum; true ; } > /tmp/.wrk5/ak9
+            echo "artifact 1 ok"
+      - persist_to_workspace:
+          root: /tmp/.wrk5
+          paths:
+            - 'ak9'
+workflows:
+  release:
+    jobs:
+      - npost
+      - ming007
+      - nova-beta:
+          requires:
+            - npost
+            - ming007
+      - sierra:
+          requires:
+            - npost
+            - ming007
+      - defualt:
+          requires:
+            - npost
+            - ming007
+      - europa-beta:
+          requires:
+            - npost
+            - ming007
+      - v6-beta:
+          requires:
+            - npost
+            - ming007
+      - full-send:
+          requires:
+            - npost
+            - ming007
+      - af-US-x-orbit
+      - level-p:
+          requires:
+            - af-US-x-orbit
+      - STAGE_DEV:
+          requires:
+            - level-p
+      - blog_limit_helper_8:
+          requires:
+            - level-p
+      - alice_x:
+          requires:
+            - blog_limit_helper_8
+      - rigel-beta:
+          requires:
+            - alice_x
+      - cn-mike:
+          requires:
+            - alice_x
+      - townAmt:
+          requires:
+            - cn-mike
+      - rigel:
+          requires:
+            - townAmt
+      - FLAG_NEXT:
+          requires:
+            - townAmt
+      - j_union_7:
+          requires:
+            - FLAG_NEXT
+      - green-light:
+          requires:
+            - j_union_7
+      - RD-END-TAB:
+          requires:
+            - j_union_7
+      - revert__Circle:
+          requires:
+            - RD-END-TAB
+      - shippit:
+          requires:
+            - revert__Circle
+      - Sceneer
+      - mx-test-b
+      - hotfix-7648:
+          requires:
+            - Sceneer
+            - mx-test-b
+      - py310-vet:
+          requires:
+            - Sceneer
+            - mx-test-b
+      - Ship_App1:
+          requires:
+            - Sceneer
+            - mx-test-b
+      - node18-build:
+          requires:
+            - Sceneer
+            - mx-test-b
+      - rocket:
+          requires:
+            - Sceneer
+            - mx-test-b
+      - LAB_DEPLOY_4:
+          requires:
+            - Sceneer
+            - mx-test-b
+      - footer-image-block
+      - prometheus-final:
+          requires:
+            - footer-image-block
+      - metaLenMin:
+          requires:
+            - footer-image-block
+      - qa:
+          requires:
+            - metaLenMin
+      - scanTypeWord:
+          requires:
+            - metaLenMin
+      - APP-315:
+          requires:
+            - scanTypeWord
+      - Login:
+          requires:
+            - scanTypeWord
+      - jan13-rev:
+          requires:
+            - Login
+      - checkNAT:
+          requires:
+            - Login
+      - callisto-beta:
+          requires:
+            - checkNAT
+      - tax-small_class
+      - encrypt_menuMerge:
+          requires:
+            - tax-small_class
+      - v6-ga:
+          requires:
+            - encrypt_menuMerge
+      - motor-callback-record:
+          requires:
+            - encrypt_menuMerge
+      - ertert:
+          requires:
+            - motor-callback-record
+      - Prepare_Tests8:
+          requires:
+            - ertert
+      - DT-DISPLAY-A:
+          requires:
+            - ertert
+      - lr0:
+          requires:
+            - DT-DISPLAY-A
+      - fire-up:
+          requires:
+            - lr0
+      - fin_rec
+      - TryRouter:
+          requires:
+            - fin_rec
+      - go1-21-fmt:
+          requires:
+            - TryRouter
+      - controller-579:
+          requires:
+            - TryRouter
+      - resolveACLs:
+          requires:
+            - controller-579
+      - CHECK_DEV:
+          requires:
+            - resolveACLs
+      - cibGkLcd:
+          requires:
+            - resolveACLs
+      - nullsub_22:
+          requires:
+            - cibGkLcd
+      - WEB-14:
+          requires:
+            - nullsub_22
+      - deg_ave:
+          requires:
+            - nullsub_22
+      - yolo:
+          requires:
+            - deg_ave
+      - PackageStaging:
+          requires:
+            - yolo
+      - entry5:
+          requires:
+            - yolo
+      - normalFn:
+          requires:
+            - entry5
+      - bake-it:
+          requires:
+            - normalFn
